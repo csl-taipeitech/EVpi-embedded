@@ -1,4 +1,4 @@
-# Raspberry-ros2-foxy-setup
+# Install ros2 package
 
 ```bash
 locale  # check for UTF-8
@@ -30,4 +30,10 @@ sudo apt install ros-foxy-ros-base
 ```bash
 source /opt/ros/foxy/setup.bash
 echo "source /opt/ros/foxy/setup.bash" >> .bashrc
+```
+
+# (optional) Install other packages
+```bash
+sudo apt install network-manager
+sudo apt install net-tools
 ```
