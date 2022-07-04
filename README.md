@@ -27,7 +27,7 @@ sudo apt upgrade
 sudo apt install ros-foxy-ros-base
 ```
 
-```
+```bash
 source /opt/ros/foxy/setup.bash
 echo "source /opt/ros/foxy/setup.bash" >> .bashrc
 ```
