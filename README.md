@@ -32,6 +32,11 @@ source /opt/ros/foxy/setup.bash
 echo "source /opt/ros/foxy/setup.bash" >> .bashrc
 ```
 
+# Install can-bus package
+```bash
+sudo apt-get install can-utils
+```
+
 # (optional) Install other packages
 ```bash
 sudo apt install network-manager
