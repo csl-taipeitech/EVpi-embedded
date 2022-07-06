@@ -27,6 +27,12 @@ sudo apt upgrade
 ```
 
 ```bash
+sudo apt install python3-rosdep2
+rosdep update
+sudo apt install python3-colcon-common-extensions
+```
+
+```bash
 sudo apt install ros-foxy-ros-base
 ```
 
@@ -62,6 +68,7 @@ Use the following commands to download and compile the package.
 ```sh
 mkdir -p ~/evpi_ws/src && cd ~/evpi_ws/src
 git clone https://github.com/csl-taipeitech/EVpi-embedded.git
+cd ..
 rosdep install -i --from-path src --rosdistro foxy -y
 colcon build
 ```
