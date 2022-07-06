@@ -1,5 +1,35 @@
 # EVpi-embedded
 
+## Dependency
+
+- [ROS2](https://docs.ros.org/en/foxy/Installation.html) (tested with Foxy)
+  ```
+  sudo apt-get install -y ros-foxy-ackermann-msgs
+  sudo apt-get install -y ros-foxy-can-msgs
+  sudo apt-get install -y ros-foxy-joy* ros-foxy-teleop*
+  ```
+
+- [can-util](https://github.com/linux-can/can-utils)
+  ```
+  sudo apt-get install can-utils
+  ```
+
+- other (optional)
+    ```
+    sudo apt install network-manager
+    sudo apt install net-tools
+    ```
+
+## Install
+
+Use the following commands to download and compile the package.
+```sh
+mkdir -p ~/evpi_ws/src && cd ~/evpi_ws/src
+git clone https://github.com/csl-taipeitech/EVpi-embedded.git
+rosdep install -i --from-path src --rosdistro foxy -y
+colcon build
+```
+
 ## Common used commands
 1. Bringup can_manager
     ```bash
@@ -39,15 +69,4 @@ sudo apt install ros-foxy-ros-base
 ```bash
 source /opt/ros/foxy/setup.bash
 echo "source /opt/ros/foxy/setup.bash" >> .bashrc
-```
-
-2. Install can-util                                      
-```bash
-sudo apt-get install can-utils
-```
-
-3. Install other packages (optional) 
-```bash
-sudo apt install network-manager
-sudo apt install net-tools
 ```
