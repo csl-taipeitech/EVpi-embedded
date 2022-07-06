@@ -1,0 +1,96 @@
+can_manager:
+  ros__parameters:
+
+# mission-critical
+    sync_signal:
+      can_id: 512
+      time_interval: 50
+      dlc: 1
+      is_rtr: false
+      is_extended: false
+      is_error: false
+      
+    brake:
+      can_id: 13
+      mode: 7 
+      dlc: 2
+      is_rtr: false
+      is_extended: false
+      is_error: false
+
+    middrive:
+      can_id: 14
+      rpm: 1 
+
+    steering_motor:
+      min_duty: 10 
+      max_duty: 50 #maximun duty
+      can_id: 15
+      mode: 8 
+      dlc: 3
+      is_rtr: false
+      is_extended: false
+      is_error: false
+      max_angle: 40.0 #degree
+
+    steering_angle: #encoder
+      can_id: 17
+      mode: 6 
+      dlc: 3
+      is_rtr: false
+      is_extended: false
+      is_error: false
+
+# non-mission-critical
+
+    eyes_strip:
+      can_id: 513
+      mode: 1 
+      pixels: 24
+      red_value: 20
+      green_value: 20
+      blue_value: 20
+      time_interval: 100
+      dlc: 6
+      is_rtr: false
+      is_extended: false
+      is_error: false
+
+    front_strip_l:
+      can_id: 514
+      mode: 1 
+      pixels: 144
+      red_value: 20
+      green_value: 20
+      blue_value: 20
+      time_interval: 100
+      dlc: 6
+      is_rtr: false
+      is_extended: false
+      is_error: false
+
+    front_strip_r:
+      can_id: 515
+      mode: 1 
+      pixels: 144
+      red_value: 20
+      green_value: 20
+      blue_value: 20
+      time_interval: 100
+      dlc: 6
+      is_rtr: false
+      is_extended: false
+      is_error: false
+
+    back_strip:
+      can_id: 518
+      mode: 1 
+      pixels: 20
+      red_value: 20
+      green_value: 20
+      blue_value: 20
+      time_interval: 100
+      dlc: 6
+      is_rtr: false
+      is_extended: false
+      is_error: false

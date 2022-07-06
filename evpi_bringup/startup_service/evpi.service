@@ -1,0 +1,10 @@
+[Unit]
+Description=EvpiScript
+
+[Service]
+Environment="HOME=root"
+#ExecStart=/usr/bin/bash /usr/local/bin/startup_launch.sh
+ExecStart=/bin/bash -c 'sudo ifconfig can0 txqueuelen 1000; source /opt/ros/foxy/setup.bash; source /home/ubuntu/evpi_ws/install/setup.bash; export ROS_DOMAIN_ID=73; ros2 launch evpi_bringup can_bringup.launch.xml; sleep 10'
+[Install]
+WantedBy=multi-user.target
+
