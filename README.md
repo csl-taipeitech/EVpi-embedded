@@ -1,4 +1,13 @@
-# Install ros2 package
+# EVpi-embedded
+
+## Common used commands
+1. Bringup can_manager
+    ```bash
+    ros2 launch evpi_bringup can_bringup.launch
+    ```
+
+## Prerequirements
+1. Install ROS2 foxy
 
 ```bash
 locale  # check for UTF-8
@@ -32,12 +41,12 @@ source /opt/ros/foxy/setup.bash
 echo "source /opt/ros/foxy/setup.bash" >> .bashrc
 ```
 
-# Install can-bus package
+2. Install can-util                                      
 ```bash
 sudo apt-get install can-utils
 ```
 
-# (optional) Install other packages
+3. Install other packages (optional) 
 ```bash
 sudo apt install network-manager
 sudo apt install net-tools
