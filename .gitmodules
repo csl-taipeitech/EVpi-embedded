@@ -1,0 +1,3 @@
+[submodule "ros2_socketcan"]
+	path = ros2_socketcan
+	url = https://github.com/autowarefoundation/ros2_socketcan.git
