@@ -71,6 +71,8 @@ git clone https://github.com/csl-taipeitech/EVpi-embedded.git
 cd ..
 rosdep install -i --from-path src --rosdistro foxy -y
 colcon build
+. install/setup.bash
+echo "source ~/evpi_ws/install/setup.bash" >> .bashrc
 ```
 
 ## Common used commands
