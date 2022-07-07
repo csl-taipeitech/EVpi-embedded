@@ -1,7 +1,7 @@
 # EVpi-embedded
 
 ## Prerequirements
-1. Install ROS2 foxy
+Install ROS2 foxy
 
 ```bash
 sudo apt update
