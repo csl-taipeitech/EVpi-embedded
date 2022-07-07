@@ -66,15 +66,19 @@ class TopicSimulator : public rclcpp::Node
         }
         else if(msg->buttons[4] != last_joy_msgs.buttons[4])
         {
-          RCLCPP_INFO(this->get_logger(), "LB button");
+            RCLCPP_INFO(this->get_logger(), "LB button");
+            led_msgs.data[1] = 4; //breath mode
+            led_msgs.data[5] = 1; //period in second 
         }
         else if(msg->buttons[5] != last_joy_msgs.buttons[5])
         {
-          RCLCPP_INFO(this->get_logger(), "RB button");
+            RCLCPP_INFO(this->get_logger(), "RB button");
+            led_msgs.data[1] = 3; //breath mode
+            led_msgs.data[5] = 1; //period in second 
         }
         else if(msg->buttons[6] != last_joy_msgs.buttons[6])
         {
-          RCLCPP_INFO(this->get_logger(), "LT button");
+            RCLCPP_INFO(this->get_logger(), "LT button");
             led_msgs.data={513,1,0,0,0};
             led_publisher_->publish(led_msgs);
         }
