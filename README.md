@@ -44,6 +44,6 @@ echo "source ~/evpi_ws/install/setup.bash" >> .bashrc
 ## Common used commands
 1. Bringup can_manager
     ```bash
-    ros2 launch evpi_bringup can_bringup.launch
+    ros2 launch evpi_bringup can_bringup.launch.xml
     ```
 
