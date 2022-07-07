@@ -31,8 +31,6 @@ class TopicSimulator : public rclcpp::Node
         static auto last_joy_msgs = sensor_msgs::msg::Joy();
         static bool first_time = true;
         static auto led_msgs = std_msgs::msg::Int16MultiArray();
-        led_msgs.data={513,1,10,20,30};
-
 
         if(first_time)
         {
