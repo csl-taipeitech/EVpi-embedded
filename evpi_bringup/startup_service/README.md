@@ -16,7 +16,7 @@
 
 1. Prep CanDo connection
     ```sh
-    cd  ~/evpi_ws/src/evpi_bringup/startup_service
+    cd  ~/evpi_ws/src/EVpi-embedded/evpi_bringup/startup_service
     ./setup.sh
     ```
 
