@@ -21,6 +21,7 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(can_msgs REQUIRED)             
+find_package(sensor_msgs REQUIRED)             
 
 ################################################################################
 # Build
@@ -32,6 +33,9 @@ include_directories(
 add_executable(can_manager src/can_manager.cpp)
 ament_target_dependencies(can_manager rclcpp can_msgs) 
 
+add_executable(topic_simulator src/topic_simulator.cpp)
+ament_target_dependencies(topic_simulator rclcpp can_msgs sensor_msgs) 
+
 ################################################################################
 # Install
 ################################################################################
@@ -41,6 +45,7 @@ install(DIRECTORY
 
 install(TARGETS
   can_manager
+  topic_simulator
   DESTINATION lib/${PROJECT_NAME})
 
 ################################################################################
