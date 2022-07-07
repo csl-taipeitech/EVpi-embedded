@@ -6,6 +6,10 @@
 
   <include file="$(find-pkg-share evpi_bringup)/launch/can_manager.launch.py"/>
 
+  <include file="$(find-pkg-share evpi_bringup)/launch/teleop.launch.py"/>
+
+  <include file="$(find-pkg-share evpi_bringup)/launch/topic_sumylator.launch.py"/>
+
   <include file="$(find-pkg-share ros2_socketcan)/launch/socket_can_receiver.launch.py">
     <arg name="interface" value="$(var interface)" />
     <arg name="interval_sec" value="$(var receiver_interval_sec)" />
@@ -15,5 +19,6 @@
     <arg name="interface" value="$(var interface)" />
     <arg name="timeout_sec" value="$(var sender_timeout_sec)" />
   </include>
+
 
 </launch>
