@@ -72,7 +72,7 @@ class TopicSimulator : public rclcpp::Node
         else if(msg->buttons[5] != last_joy_msgs.buttons[5])
         {
             RCLCPP_INFO(this->get_logger(), "RB button");
-            led_msgs.data[1] = 3; //breath mode
+            led_msgs.data[1] = 3; //blink mode
             led_msgs.data[5] = 1; //period in second 
             led_publisher_->publish(led_msgs);
         }
