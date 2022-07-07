@@ -14,8 +14,6 @@ sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
 export LANG=en_US.UTF-8
 locale  # verify settings
 apt-cache policy | grep universe
-sudo apt install software-properties-common
-sudo add-apt-repository universe
 sudo apt update && sudo apt install curl gnupg2 lsb-release
 ```
 
