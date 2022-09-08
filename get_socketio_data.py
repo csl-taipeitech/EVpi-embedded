@@ -5,19 +5,26 @@ from time import sleep
 import socketio
 import argparse
 import json
+from can import LEDCan
 
 HOST = '10.100.1.185'
 PORT = 5100
 
 sio = socketio.Client()
 
-
 @sio.on('sensor')
 def handleMsg(msg):
+    led = LEDCan('can0')
     data = json.loads(msg)
     # print('=================', data)
     for sensor in data:
         if sensor['name'] == 'STEERING':
+            if sensor['data'] > 5*3.1415/180:
+                print('Left')
+                led.Left()
+            elif sensor['data'] < -5*3.1415/180:
+                print('Right')
+                led.Right()
             # print('angle: ', sensor['data'])
             ""
         elif sensor['name'] == 'EVPI_STATE':
@@ -28,24 +35,24 @@ def handleMsg(msg):
             if sensor['data']:
                 led = json.loads(sensor['data'])
 
-
 @sio.on('customed_led')
 def handleMsg(msg):
     data = json.loads(msg)
     print(data)
 
-
 @sio.on('ids')
 def handleMsg(msg):
+    led = LEDCan('can0')
     msg = json.loads(msg)
     if msg["Classification"] != "Benign":
         if msg["Attack_type"] == 'DoS':
             print("IDS Alert: DoS Detected!")
+            led.Hazzard()
         elif msg["Attack_type"] == 'Spoofing':
             print("IDS Alert: Spoofing Detected!")
+            led.Hazzard()
         else:
             print("Unexpected Alert!")
-
 
 @sio.on('rsu')
 def handleMsg(msg):
@@ -56,15 +63,15 @@ def handleMsg(msg):
             remain = msg['Remaining_Time']
         else:
             print('OBU Alert: RSU Invalid!')
+            led.Hazzard()
     else:
         print('OBU Alert: RSU Invalid!')
-
+        led.Hazzard()
 
 @sio.on('drive_status')
 def handleRecover(msg):
     data = json.loads(msg)
     print(data)
-
 
 def process_command():
     parser = argparse.ArgumentParser()
@@ -73,7 +80,6 @@ def process_command():
     parser.add_argument('--port', '-p', type=int,
                         required=False, help='Set Port', default=PORT)
     return parser.parse_args()
-
 
 if __name__ == '__main__':
     args = process_command()
