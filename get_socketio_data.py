@@ -7,7 +7,7 @@ import json
 from can import LEDCan
 from threading import Timer
 
-HOST = '192.168.2.100'
+HOST = '192.168.50.100'
 PORT = 5100
 
 sio = socketio.Client()
@@ -39,21 +39,17 @@ def handleMsg(msg):
                 light_status='right'
             else:
                 # print('None')
+                if light_status is not 'hazzard':
+                    light_status='none'
+        elif sensor['name'] == 'DRIVE_STATUS':
+            # return to manual mode
+            if sensor['data'] == 2 and light_status == 'hazzard':
+                print('recover')
                 light_status='none'
-            # print('angle: ', sensor['data'])
-            ""
-        elif sensor['name'] == 'EVPI_STATE':
-            # print('speed: ', sensor['data'])
-            ""
         elif sensor['name'] == 'LED':
             # print(sensor['data'])
             if sensor['data']:
                 led = json.loads(sensor['data'])
-
-@sio.on('customed_led')
-def handleMsg(msg):
-    data = json.loads(msg)
-    print(data)
 
 @sio.on('ids')
 def handleMsg(msg):
@@ -83,11 +79,6 @@ def handleMsg(msg):
     else:
         print('OBU Alert: RSU Invalid!')
         light_status='hazzard'
-
-@sio.on('drive_status')
-def handleRecover(msg):
-    data = json.loads(msg)
-    print(data)
 
 def process_command():
     parser = argparse.ArgumentParser()
